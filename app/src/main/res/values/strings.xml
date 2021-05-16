@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">goodboi</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="login">Connexion</string>
+    <string name="id">Identifiant</string>
+    <string name="subscription">Inscription</string>
+    <string name="connect">Connexion</string>
+    <string name="password">Mot de passe</string>
+    <string name="confirmPassword">Confirmation mot de passe</string>
+    <string name="alreadyAccount">Déjà un compte ? Connexion</string>
+    <string name="noAccount">Pas encore de compte ? Inscription</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
