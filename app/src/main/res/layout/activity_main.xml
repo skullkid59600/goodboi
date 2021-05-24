@@ -6,13 +6,85 @@
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <ImageView
+        android:id="@+id/heartImage1"
+        android:layout_width="92dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginBottom="25dp"
+        android:contentDescription="@string/like"
+        android:scaleX="@android:dimen/app_icon_size"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/heart"
+        app:tint="@color/vert" />
+
+    <ImageView
+        android:id="@+id/heartImage2"
+        android:layout_width="92dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="25dp"
+        android:contentDescription="@string/like"
+        android:scaleX="@android:dimen/app_icon_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/heart"
+        app:tint="@color/violet" />
+
+
+    <ImageView
+        android:id="@+id/dogImage1"
+        android:layout_width="198dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="56dp"
+        android:background="@color/vert"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/polaroidImage1"
+        app:layout_constraintEnd_toEndOf="@+id/polaroidImage1"
+        app:layout_constraintStart_toStartOf="@+id/polaroidImage1"
+        app:layout_constraintTop_toTopOf="@+id/polaroidImage1"
+        app:srcCompat="@drawable/golder_retriever_puppy" />
+
+    <ImageView
+        android:id="@+id/dogImage2"
+        android:layout_width="198dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="56dp"
+        android:background="@color/violet"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/polaroidImage2"
+        app:layout_constraintEnd_toEndOf="@+id/polaroidImage2"
+        app:layout_constraintStart_toStartOf="@+id/polaroidImage2"
+        app:layout_constraintTop_toTopOf="@+id/polaroidImage2"
+        app:srcCompat="@drawable/golder_retriever_puppy" />
+
+    <ImageView
+        android:id="@+id/polaroidImage1"
+        android:layout_width="230dp"
+        android:layout_height="282dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="70dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/polaroid"
+        android:padding="1dp"/>
+
+    <ImageView
+        android:id="@+id/polaroidImage2"
+        android:layout_width="230dp"
+        android:layout_height="282dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="352dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/polaroid"
+        android:padding="1dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
