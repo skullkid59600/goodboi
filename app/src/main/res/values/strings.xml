@@ -9,4 +9,6 @@
     <string name="alreadyAccount">Déjà un compte ? Connexion</string>
     <string name="noAccount">Pas encore de compte ? Inscription</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
 </resources>
