@@ -8,10 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#C41313</color>
-<<<<<<< HEAD
     <color name="vert">#E62BB891</color>
-=======
-    <color name="vert">#3DCFB8</color>
->>>>>>> c2c0a953d5013e07419ecd0e47dde49b8bdd65ce
     <color name="violet">#6900FF</color>
 </resources>
