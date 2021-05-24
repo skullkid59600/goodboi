@@ -11,6 +11,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
+<<<<<<< HEAD
     <string name="pathDog">C:\Users\lecom\Documents\Prog\M1 III\S2\dev mobile\Projet\goodboi\img\golder-retriever-puppy.jpeg</string>
     <string name="like">like</string>
+=======
+>>>>>>> c2c0a953d5013e07419ecd0e47dde49b8bdd65ce
 </resources>
