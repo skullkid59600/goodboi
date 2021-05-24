@@ -1,66 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MainActivity">
 
-    <data class="MainActivityBinding">
-        <variable
-            name="test"
-            type="String" />
-    </data>
+    <ImageView
+        android:id="@+id/heartImage1"
+        android:layout_width="92dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginBottom="25dp"
+        android:contentDescription="@string/like"
+        android:scaleX="@android:dimen/app_icon_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/heart"
+        app:tint="@color/vert" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/purple_500"
-        android:paddingTop="?attr/actionBarSize">
+    <ImageView
+        android:id="@+id/heartImage2"
+        android:layout_width="92dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="25dp"
+        android:contentDescription="@string/like"
+        android:scaleX="@android:dimen/app_icon_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/heart"
+        app:tint="@color/violet" />
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/nav_view"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="0dp"
-            android:layout_marginEnd="0dp"
-            android:background="?android:attr/windowBackground"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:menu="@menu/bottom_nav_menu"
-            />
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/nav_host_fragment"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:defaultNavHost="true"
-            app:layout_constraintBottom_toTopOf="@id/nav_view"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:navGraph="@navigation/mobile_navigation" />
+    <ImageView
+        android:id="@+id/dogImage1"
+        android:layout_width="198dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="56dp"
+        android:background="@color/vert"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/polaroidImage1"
+        app:layout_constraintEnd_toEndOf="@+id/polaroidImage1"
+        app:layout_constraintStart_toStartOf="@+id/polaroidImage1"
+        app:layout_constraintTop_toTopOf="@+id/polaroidImage1"
+        app:srcCompat="@drawable/golder_retriever_puppy" />
 
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:text="@{test}"
-            android:textSize="40sp"
-            tools:text="Coucou"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/nav_host_fragment"
-            app:layout_constraintStart_toStartOf="parent" />
+    <ImageView
+        android:id="@+id/dogImage2"
+        android:layout_width="198dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="56dp"
+        android:background="@color/violet"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/polaroidImage2"
+        app:layout_constraintEnd_toEndOf="@+id/polaroidImage2"
+        app:layout_constraintStart_toStartOf="@+id/polaroidImage2"
+        app:layout_constraintTop_toTopOf="@+id/polaroidImage2"
+        app:srcCompat="@drawable/golder_retriever_puppy" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Allons à la second activity"
-            app:layout_constraintBottom_toTopOf="@+id/nav_view"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/nav_host_fragment" />
+    <ImageView
+        android:id="@+id/polaroidImage1"
+        android:layout_width="230dp"
+        android:layout_height="282dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="70dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/polaroid"
+        android:padding="1dp"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+    <ImageView
+        android:id="@+id/polaroidImage2"
+        android:layout_width="230dp"
+        android:layout_height="282dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="352dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/polaroid"
+        android:padding="1dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
