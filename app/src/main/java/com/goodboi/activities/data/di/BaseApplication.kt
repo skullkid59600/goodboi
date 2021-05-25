@@ -3,7 +3,9 @@ package com.goodboi.activities.data.di
 import android.app.Application
 import android.graphics.drawable.LevelListDrawable
 import android.view.View
+import com.goodboi.activities.data.di.modules.RepositoryModules
 import com.goodboi.activities.data.di.modules.ServiceModules
+import com.goodboi.activities.data.di.modules.ViewModelModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -15,12 +17,15 @@ class BaseApplication: Application() {
         super.onCreate()
 
         startKoin{
-            androidLogger(Level.NONE)
+            androidLogger(Level.DEBUG)
             androidContext( this@BaseApplication)
-            module(listOf(
-                ServiceModules.services
-                RepositoryModules.
-            ))
+            modules(
+                listOf(
+                ServiceModules.services,
+                RepositoryModules.repository,
+                ViewModelModules.viewModels
+            )
+            )
         }
     }
 

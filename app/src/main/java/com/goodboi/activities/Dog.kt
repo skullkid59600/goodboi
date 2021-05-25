@@ -2,8 +2,8 @@ package com.goodboi.activities
 
 class Dog(var id: Int) {
     var point = 1000.0
-    var games //Number of played games = 0
-    var win // Number of games loose = 0
+    var games = 0 //Number of played games = 0
+    var win = 0// Number of games loose = 0
     var cute = 0
 
     fun play(point: Double) {

@@ -1,4 +1,6 @@
 package com.goodboi.fragments.Home
 
-class HomeViewModel {
+import androidx.lifecycle.ViewModel
+
+class HomeViewModel:ViewModel() {
 }
