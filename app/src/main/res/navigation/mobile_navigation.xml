@@ -12,9 +12,7 @@
         tools:layout="@layout/fragment_classement" >
         <action
             android:id="@+id/action_classementFragment_to_swipeFragment"
-            app:destination="@id/swipeFragment"
-            app:enterAnim="@anim/fragment_fade_enter"
-            app:exitAnim="@anim/fragment_fade_exit" />
+            app:destination="@id/swipeFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -26,7 +24,6 @@
             app:destination="@id/swipeFragment">
             <argument
                 android:name="text"
-                app:argType="@string/app_name"
                 app:nullable="true"/>
         </action>
 
@@ -39,13 +36,10 @@
         <action
             android:id="@+id/action_swipeFragment_to_classementFragment"
             app:destination="@id/classementFragment"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@anim/fragment_fade_exit" />
+            app:enterAnim="@android:anim/fade_in" />
         <action
             android:id="@+id/action_swipeFragment_to_profilFragment"
-            app:destination="@id/profilFragment"
-            app:enterAnim="@anim/fragment_fade_enter"
-            app:exitAnim="@anim/fragment_fade_exit" />
+            app:destination="@id/profilFragment" />
     </fragment>
     <fragment
         android:id="@+id/profilFragment"
