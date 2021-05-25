@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".fragments.SwipeFragment">
+
+    <ImageView
+        android:id="@+id/heartImage1"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="25dp"
+        android:contentDescription="@string/like"
+        android:scaleX="@android:dimen/app_icon_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_baseline_favorite_24"
+        app:tint="@color/choice1" />
+
+    <ImageView
+        android:id="@+id/heartImage2"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="25dp"
+        android:contentDescription="@string/like"
+        android:scaleX="@android:dimen/app_icon_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_favorite_24"
+        app:tint="@color/choice2" />
+
+
+    <ImageView
+        android:id="@+id/dogImage1"
+        android:layout_width="198dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="56dp"
+        android:background="@color/choice1"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/polaroidImage1"
+        app:layout_constraintEnd_toEndOf="@+id/polaroidImage1"
+        app:layout_constraintStart_toStartOf="@+id/polaroidImage1"
+        app:layout_constraintTop_toTopOf="@+id/polaroidImage1"
+        app:srcCompat="@drawable/golder_retriever_puppy"
+        android:contentDescription="@string/dog"/>
+
+    <ImageView
+        android:id="@+id/dogImage2"
+        android:layout_width="198dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="56dp"
+        android:background="@color/choice2"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/polaroidImage2"
+        app:layout_constraintEnd_toEndOf="@+id/polaroidImage2"
+        app:layout_constraintStart_toStartOf="@+id/polaroidImage2"
+        app:layout_constraintTop_toTopOf="@+id/polaroidImage2"
+        app:srcCompat="@drawable/golder_retriever_puppy"
+        android:contentDescription="@string/dog"/>
+
+    <ImageView
+        android:id="@+id/polaroidImage1"
+        android:layout_width="230dp"
+        android:layout_height="282dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="75dp"
+        android:padding="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/polaroid"
+        android:contentDescription="@string/dog"/>
+
+    <ImageView
+        android:id="@+id/polaroidImage2"
+        android:layout_width="230dp"
+        android:layout_height="282dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="360dp"
+        android:padding="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/polaroid"
+        android:elevation="30dp"
+        android:contentDescription="@string/dog"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
