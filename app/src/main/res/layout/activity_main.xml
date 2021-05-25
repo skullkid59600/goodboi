@@ -4,33 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroud"
     tools:context=".activities.MainActivity">
 
     <ImageView
         android:id="@+id/heartImage1"
-        android:layout_width="92dp"
+        android:layout_width="52dp"
         android:layout_height="52dp"
-        android:layout_marginStart="64dp"
+        android:layout_marginStart="80dp"
         android:layout_marginBottom="25dp"
         android:contentDescription="@string/like"
         android:scaleX="@android:dimen/app_icon_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/heart"
-        app:tint="@color/vert" />
+        app:srcCompat="@drawable/ic_baseline_favorite_24"
+        app:tint="@color/choice1" />
 
     <ImageView
         android:id="@+id/heartImage2"
-        android:layout_width="92dp"
+        android:layout_width="52dp"
         android:layout_height="52dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginEnd="80dp"
         android:layout_marginBottom="25dp"
         android:contentDescription="@string/like"
         android:scaleX="@android:dimen/app_icon_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/heart"
-        app:tint="@color/violet" />
+        app:srcCompat="@drawable/ic_baseline_favorite_24"
+        app:tint="@color/choice2" />
 
 
     <ImageView
@@ -41,7 +42,7 @@
         android:layout_marginTop="6dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="56dp"
-        android:background="@color/vert"
+        android:background="@color/choice1"
         android:padding="4dp"
         app:layout_constraintBottom_toBottomOf="@+id/polaroidImage1"
         app:layout_constraintEnd_toEndOf="@+id/polaroidImage1"
@@ -57,7 +58,7 @@
         android:layout_marginTop="6dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="56dp"
-        android:background="@color/violet"
+        android:background="@color/choice2"
         android:padding="4dp"
         app:layout_constraintBottom_toBottomOf="@+id/polaroidImage2"
         app:layout_constraintEnd_toEndOf="@+id/polaroidImage2"
@@ -70,21 +71,44 @@
         android:layout_width="230dp"
         android:layout_height="282dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="75dp"
+        android:padding="1dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/polaroid"
-        android:padding="1dp"/>
+        app:srcCompat="@drawable/polaroid" />
 
     <ImageView
         android:id="@+id/polaroidImage2"
         android:layout_width="230dp"
         android:layout_height="282dp"
         android:layout_marginStart="148dp"
-        android:layout_marginTop="352dp"
+        android:layout_marginTop="360dp"
+        android:padding="1dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/polaroid"
-        android:padding="1dp"/>
+        android:elevation="30dp"/>
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="46dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_emoji_events_24"
+        app:tint="@color/text1" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_person_24"
+        app:tint="@color/text1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
