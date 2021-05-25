@@ -13,4 +13,9 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="pathDog">C:\Users\lecom\Documents\Prog\M1 III\S2\dev mobile\Projet\goodboi\img\golder-retriever-puppy.jpeg</string>
     <string name="like">like</string>
+    <string name="dog">dog</string>
+    <string name="classement">classement</string>
+    <string name="profile">profile</string>
+    <string name="swipe">swipe</string>
+    <string name="empty"></string>
 </resources>

@@ -3,10 +3,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red">#C41313</color>
 
+    <color name="selectedIcone">#9C27B0</color>
 
 
     <color name="choice1">#2BB891</color>
-    <color name="backgroud">#2D2F31</color>
+    <color name="backgroud">#E9E7EC</color>
     <color name="coolGrey">#818AA3</color>
     <color name="topIcons">#FFEEDB</color>
     <color name="text1">#2F243A</color>
