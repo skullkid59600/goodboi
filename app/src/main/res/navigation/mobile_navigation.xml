@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/swipeFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/classementFragment"
@@ -26,6 +26,9 @@
                 android:name="text"
                 app:nullable="true"/>
         </action>
+        <action
+            android:id="@+id/action_loginFragment_to_subscriptionFragment"
+            app:destination="@id/subscriptionFragment" />
 
     </fragment>
     <fragment
@@ -49,5 +52,14 @@
         <action
             android:id="@+id/action_profilFragment_to_swipeFragment"
             app:destination="@id/swipeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/subscriptionFragment"
+        android:name="com.goodboi.fragments.SubscriptionFragment"
+        android:label="fragment_subscription"
+        tools:layout="@layout/fragment_subscription" >
+        <action
+            android:id="@+id/action_subscriptionFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
 </navigation>

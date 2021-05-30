@@ -2,6 +2,7 @@
     <string name="app_name">goodboi</string>
     <string name="login">Connexion</string>
     <string name="id">Identifiant</string>
+    <string name="email">Email</string>
     <string name="subscription">Inscription</string>
     <string name="connect">Connexion</string>
     <string name="password">Mot de passe</string>

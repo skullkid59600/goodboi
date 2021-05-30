@@ -1,60 +1,71 @@
 package com.goodboi.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.goodboi.R
+import com.goodboi.fragments.viewModel.LoginViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [LoginFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class LoginFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private val loginViewModel: LoginViewModel by viewModel()
+
+    private val permissionResultLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { map ->
+            if (!map.values.contains(false)) {
+                getDocumentResultLauncher.launch("image/jpeg | image/jpg | image/png")
+            }
         }
-    }
+
+    private val getDocumentResultLauncher =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+            uri?.let {
+                Log.d("MyURI", uri.path!!)
+            }
+        }
+
+    private val takePictureResultLauncher =
+        registerForActivityResult(ActivityResultContracts.TakePicture()) {
+            if (it) {
+
+            }
+        }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+
+        val root = inflater.inflate(R.layout.fragment_login, container, false)
+        return root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment LoginFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            LoginFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        // When the user click the button
+        view.findViewById<TextView>(R.id.buttonSignIn).setOnClickListener {
+
+            val editTextMail:TextView? = view.findViewById<TextView>(R.id.emailLogin)
+            val editTextPassword:TextView? = view.findViewById<TextView>(R.id.passwordLogin)
+            // get editText values
+            loginViewModel.signIn(editTextMail?.text.toString(), editTextPassword?.text.toString())
+                .observe(viewLifecycleOwner, Observer {
+                    it?.uid
+                    findNavController().navigate(R.id.swipeFragment)
+                })
+        }
+
+        view.findViewById<TextView>(R.id.SignUp).setOnClickListener {
+            findNavController().navigate(R.id.subscriptionFragment)
+        }
     }
 }

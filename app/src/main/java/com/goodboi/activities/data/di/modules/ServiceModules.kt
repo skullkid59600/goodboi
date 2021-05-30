@@ -6,8 +6,8 @@ import org.koin.dsl.module
 object ServiceModules {
 
     val services = module {
-        fun createFirebaseAuthService() =
-            FirebaseAuthService()
+        fun createFirebaseAuthService()
+                = FirebaseAuthService()
         single { createFirebaseAuthService() }
     }
 }
