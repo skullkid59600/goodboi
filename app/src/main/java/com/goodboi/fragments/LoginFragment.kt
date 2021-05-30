@@ -54,16 +54,18 @@ class LoginFragment : Fragment() {
         // When the user click the button
         view.findViewById<TextView>(R.id.buttonSignIn).setOnClickListener {
 
-            val editTextMail = view.findViewById<TextView>(R.id.emailLogin)
-            val editTextPassword = view.findViewById<TextView>(R.id.passwordLogin)
+            val editTextMail:TextView? = view.findViewById<TextView>(R.id.emailLogin)
+            val editTextPassword:TextView? = view.findViewById<TextView>(R.id.passwordLogin)
             // get editText values
-            loginViewModel.signIn(editTextMail.text.toString(), editTextPassword.text.toString())
+            loginViewModel.signIn(editTextMail?.text.toString(), editTextPassword?.text.toString())
                 .observe(viewLifecycleOwner, Observer {
                     it?.uid
                     findNavController().navigate(R.id.swipeFragment)
                 })
         }
 
-
+        view.findViewById<TextView>(R.id.SignUp).setOnClickListener {
+            findNavController().navigate(R.id.subscriptionFragment)
+        }
     }
 }
