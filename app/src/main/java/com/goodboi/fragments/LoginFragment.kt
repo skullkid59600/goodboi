@@ -60,7 +60,7 @@ class LoginFragment : Fragment() {
             loginViewModel.signIn(editTextMail?.text.toString(), editTextPassword?.text.toString())
                 .observe(viewLifecycleOwner, Observer {
                     it?.uid
-                    findNavController().navigate(R.id.swipeFragment)
+                    findNavController().navigate(R.id.navigation_swipe)
                 })
         }
 
