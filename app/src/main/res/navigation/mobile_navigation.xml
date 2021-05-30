@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/navigation_swipe">
 
     <fragment
-        android:id="@+id/classementFragment"
+        android:id="@+id/navigation_classement"
         android:name="com.goodboi.fragments.ClassementFragment"
         android:label="fragment_classement"
         tools:layout="@layout/fragment_classement" >
         <action
             android:id="@+id/action_classementFragment_to_swipeFragment"
-            app:destination="@id/swipeFragment" />
+            app:destination="@id/navigation_swipe" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -21,7 +21,7 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_swipeFragment"
-            app:destination="@id/swipeFragment">
+            app:destination="@id/navigation_swipe">
             <argument
                 android:name="text"
                 app:nullable="true"/>
@@ -32,26 +32,26 @@
 
     </fragment>
     <fragment
-        android:id="@+id/swipeFragment"
+        android:id="@+id/navigation_swipe"
         android:name="com.goodboi.fragments.SwipeFragment"
         android:label="fragment_swipe"
         tools:layout="@layout/fragment_swipe" >
         <action
             android:id="@+id/action_swipeFragment_to_classementFragment"
-            app:destination="@id/classementFragment"
+            app:destination="@id/navigation_classement"
             app:enterAnim="@android:anim/fade_in" />
         <action
             android:id="@+id/action_swipeFragment_to_profilFragment"
-            app:destination="@id/profilFragment" />
+            app:destination="@id/navigation_profile" />
     </fragment>
     <fragment
-        android:id="@+id/profilFragment"
+        android:id="@+id/navigation_profile"
         android:name="com.goodboi.fragments.ProfilFragment"
         android:label="fragment_profil"
         tools:layout="@layout/fragment_profil" >
         <action
             android:id="@+id/action_profilFragment_to_swipeFragment"
-            app:destination="@id/swipeFragment" />
+            app:destination="@id/navigation_swipe" />
     </fragment>
     <fragment
         android:id="@+id/subscriptionFragment"
