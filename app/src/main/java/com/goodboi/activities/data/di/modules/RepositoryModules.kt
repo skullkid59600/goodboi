@@ -7,8 +7,8 @@ import org.koin.dsl.module
 object RepositoryModules {
 
     val repository = module{
-        fun createAuthRepository(firebaseAuthService: FirebaseAuthService) =
-                AuthRepository(firebaseAuthService)
+        fun createAuthRepository(firebaseAuthService: FirebaseAuthService)
+                = AuthRepository(firebaseAuthService)
         single {createAuthRepository(get())}
     }
 }

@@ -24,8 +24,9 @@ class BaseApplication: Application() {
                 ServiceModules.services,
                 RepositoryModules.repository,
                 ViewModelModules.viewModels
+                )
             )
-            )
+            koin.createRootScope()
         }
     }
 
