@@ -11,11 +11,13 @@ tools:context=".fragments.SwipeFragment">
         android:layout_width="52dp"
         android:layout_height="52dp"
         android:layout_marginStart="80dp"
+        android:layout_marginTop="66dp"
         android:layout_marginBottom="25dp"
         android:contentDescription="@string/like"
         android:scaleX="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/polaroidImage2"
         app:srcCompat="@drawable/ic_baseline_favorite_24"
         app:tint="@color/choice1" />
 
@@ -23,12 +25,14 @@ tools:context=".fragments.SwipeFragment">
         android:id="@+id/heartImage2"
         android:layout_width="52dp"
         android:layout_height="52dp"
+        android:layout_marginTop="66dp"
         android:layout_marginEnd="80dp"
         android:layout_marginBottom="25dp"
         android:contentDescription="@string/like"
         android:scaleX="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/polaroidImage2"
         app:srcCompat="@drawable/ic_baseline_favorite_24"
         app:tint="@color/choice2" />
 
@@ -85,12 +89,12 @@ tools:context=".fragments.SwipeFragment">
         android:layout_height="282dp"
         android:layout_marginStart="148dp"
         android:layout_marginTop="360dp"
+        android:contentDescription="@string/dog"
+        android:elevation="30dp"
         android:padding="1dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/polaroid"
-        android:elevation="30dp"
-        android:contentDescription="@string/dog"/>
+        app:srcCompat="@drawable/polaroid" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
