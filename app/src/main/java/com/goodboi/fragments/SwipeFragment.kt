@@ -1,11 +1,15 @@
 package com.goodboi.fragments
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.goodboi.R
+import com.goodboi.databinding.FragmentSwipeBinding
+import com.goodboi.utils.fragmentAutoCleared
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +25,7 @@ class SwipeFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private var _binding: FragmentSwipeBinding by fragmentAutoCleared()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,9 +40,18 @@ class SwipeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_swipe, container, false)
+        _binding = FragmentSwipeBinding.inflate(inflater, container, false)
+        return _binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding.name = "SWIPE FRAGMENT"
+        //affiche le contenu de main dans le fragment au bous de 3 sec
+//        Handler().postDelayed({
+//            _binding.hasToDisplay=true;
+//        }, 3000)
+    }
     companion object {
         /**
          * Use this factory method to create a new instance of
