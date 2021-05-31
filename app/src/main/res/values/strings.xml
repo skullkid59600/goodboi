@@ -13,10 +13,12 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="pathDog">C:\Users\lecom\Documents\Prog\M1 III\S2\dev mobile\Projet\goodboi\img\golder-retriever-puppy.jpeg</string>
-    <string name="like">like</string>
-    <string name="dog">dog</string>
-    <string name="classement">classement</string>
-    <string name="profile">profile</string>
-    <string name="swipe">swipe</string>
+    <string name="like">Like</string>
+    <string name="dog">Dog</string>
+    <string name="classement">Classement</string>
+    <string name="profile">Profil</string>
+    <string name="profilePicture">Photo de profil</string>
+    <string name="swipe">Swipe</string>
+    <string name="takePicture">Prendre une photo</string>
     <string name="empty"></string>
 </resources>
