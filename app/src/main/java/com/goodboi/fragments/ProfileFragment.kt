@@ -55,6 +55,7 @@ class ProfilFragment : Fragment() {
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
         } catch (e: ActivityNotFoundException) {
             // display error state to the user
+            Log.d("ERR", "Impossible to take a picture, you don't have the right")
         }
     }
 
