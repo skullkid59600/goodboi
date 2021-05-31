@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.goodboi.fragments.LoginFragment"
-        android:label="Login"
+        android:label="Connexion"
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_swipeFragment"
