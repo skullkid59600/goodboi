@@ -51,8 +51,6 @@ class ProfilFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_profil, container, false)
     }
 
-    val requestCode = 100
-    val resultCode = 100
     val data = null
     val REQUEST_IMAGE_CAPTURE = 1
     var imageId: ImageView? = null

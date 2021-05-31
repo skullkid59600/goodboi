@@ -1,13 +1,10 @@
 package com.goodboi.fragments
 
-import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.goodboi.R
+import androidx.fragment.app.Fragment
 import com.goodboi.databinding.FragmentSwipeBinding
 import com.goodboi.utils.fragmentAutoCleared
 
