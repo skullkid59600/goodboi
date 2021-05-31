@@ -21,20 +21,6 @@ class ProfilFragment : Fragment() {
 
     private val MY_CAMERA_REQUEST_CODE = 100
 
-    private val permissionResultLauncher =
-        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { map ->
-            if (!map.values.contains(false)) {
-                getDocumentResultLauncher.launch("image/jpeg | image/jpg | image/png")
-            }
-        }
-
-    private val getDocumentResultLauncher =
-        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-            uri?.let {
-                Log.d("MyURI", uri.path!!)
-            }
-        }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -69,13 +55,6 @@ class ProfilFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         imageId = view?.findViewById(R.id.profilePicture)
-
-        permissionResultLauncher.launch(
-            arrayOf(
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.CAMERA
-            )
-        )
 
         view.findViewById<Button>(R.id.buttonPhoto).setOnClickListener {
             dispatchTakePictureIntent()
