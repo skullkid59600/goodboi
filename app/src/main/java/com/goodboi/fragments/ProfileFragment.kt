@@ -35,13 +35,6 @@ class ProfilFragment : Fragment() {
             }
         }
 
-    private val takePictureResultLauncher =
-        registerForActivityResult(ActivityResultContracts.TakePicture()) {
-            if (it) {
-
-            }
-        }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

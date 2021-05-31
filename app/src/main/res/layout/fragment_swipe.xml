@@ -84,25 +84,25 @@
             android:layout_width="230dp"
             android:layout_height="282dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="75dp"
+            android:layout_marginTop="30dp"
+            android:contentDescription="@string/dog"
             android:padding="1dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/polaroid"
-            android:contentDescription="@string/dog"/>
+            app:srcCompat="@drawable/polaroid" />
 
         <ImageView
             android:id="@+id/polaroidImage2"
             android:layout_width="230dp"
             android:layout_height="282dp"
             android:layout_marginStart="148dp"
-            android:layout_marginTop="360dp"
+            android:layout_marginTop="320dp"
+            android:contentDescription="@string/dog"
+            android:elevation="30dp"
             android:padding="1dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/polaroid"
-            android:elevation="30dp"
-            android:contentDescription="@string/dog"/>
+            app:srcCompat="@drawable/polaroid" />
 
         <TextView
             android:id="@+id/textView6"
