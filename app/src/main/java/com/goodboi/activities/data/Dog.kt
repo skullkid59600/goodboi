@@ -1,6 +1,8 @@
-package com.goodboi.activities
+package com.goodboi.activities.data
 
-class Dog(var id: Int) {
+import java.net.URL
+
+class Dog(var id: Int, val image: String) {
     var point = 1000.0
     var games = 0 //Number of played games = 0
     var win = 0// Number of games loose = 0
@@ -36,17 +38,18 @@ class Dog(var id: Int) {
         return "Dog{" +
                 "point=" + point +
                 ", id=" + id +
-                ", games=" + games +
-                ", win=" + win +
-                ", rate=" + rate +
-                ", cute=" + cute +
+//                ", games=" + games +
+//                ", win=" + win +
+//                ", rate=" + rate +
+//                ", cute=" + cute +
+                ", image=" + image +
                 '}'
     }
 
-    fun main() {//TODO modifier Main de test
+    /*fun main() {//TODO modifier Main de test
         val dogs = arrayOfNulls<Dog>(10)
         for (i in 0..9) {
-            dogs[i] = Dog(i)
+            dogs[i] = Dog(i, "")
             dogs[i]!!.cute = i * 10
             println(dogs[i])
         }
@@ -66,5 +69,6 @@ class Dog(var id: Int) {
         for (i in 0..9) {
             println(dogs[i])
         }
-    }
+    }*/
 }
+

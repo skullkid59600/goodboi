@@ -14,14 +14,16 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.goodboi.R
+import com.goodboi.activities.data.Dog
 import com.goodboi.activities.data.ImageViewModelFactory
 import com.goodboi.activities.data.Repository.ImageRepository
 import com.goodboi.databinding.MainActivityBinding
 import com.goodboi.fragments.viewModel.ImageViewModel
 import com.goodboi.fragments.viewModel.myResponse
-import com.goodboi.utils.Constants
 import com.goodboi.utils.activityViewBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.net.URL
+import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
     private val binding by activityViewBinding(MainActivityBinding::inflate)
@@ -30,6 +32,8 @@ class MainActivity : AppCompatActivity() {
 
     //Implement API Images
     private lateinit var imageViewModel: ImageViewModel
+
+    var dogs: ArrayList<Dog?> = ArrayList<Dog?>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,21 +51,33 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(nNavControler, appBarConfiguration)
     navView.setupWithNavController(nNavControler)
 
+        //Créé 10 chiens avec leur image récupéré de l'API dans le liste
+//        for (i in 0..9) {
+//            dogs.add(Dog(i, makeImageRequest()))
+//            println(dogs.get(i).toString())
+//        }
+    }
+
+    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
+        return super.onCreateView(name, context, attrs)
+    }
+    fun makeImageRequest() : String{
         val repository = ImageRepository()
         val viewModelFactory = ImageViewModelFactory(repository)
+        var res : String = "aa"
         imageViewModel = ViewModelProvider(this, viewModelFactory).get(ImageViewModel::class.java)
         imageViewModel.getImage()
         myResponse.observe(this, Observer { response ->
             if(response.isSuccessful){
                 Log.d("Response", response.body()?.message!!)
                 Log.d("Response", response.body()?.status!!)
+                res = response.body()?.message!!
             }else{
                 Log.d("Response", response.errorBody().toString())
+                res = response.errorBody().toString()
             }
         })
-    }
-
-    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
-        return super.onCreateView(name, context, attrs)
+        println(res)
+        return res
     }
 }
