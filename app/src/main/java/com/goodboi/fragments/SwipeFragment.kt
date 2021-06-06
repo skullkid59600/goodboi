@@ -1,36 +1,32 @@
 package com.goodboi.fragments
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.goodboi.R
+import com.goodboi.activities.data.ImageViewModelFactory
+import com.goodboi.activities.data.Repository.ImageRepository
 import com.goodboi.databinding.FragmentSwipeBinding
+import com.goodboi.fragments.viewModel.ImageViewModel
+import com.goodboi.fragments.viewModel.myResponse
 import com.goodboi.utils.fragmentAutoCleared
+import kotlinx.coroutines.*
+import java.io.IOException
+import java.net.URL
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SwipeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SwipeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
     private var _binding: FragmentSwipeBinding by fragmentAutoCleared()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    //Implement API Images
+    private lateinit var imageViewModel: ImageViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,31 +37,48 @@ class SwipeFragment : Fragment() {
         return _binding.root
     }
 
+    private fun makeImageRequest(imageView: ImageView) {
+        val repository = ImageRepository()
+        val viewModelFactory = ImageViewModelFactory(repository)
+        var res = URL("https://google.fr")
+        imageViewModel = ViewModelProvider(this, viewModelFactory).get(ImageViewModel::class.java)
+        imageViewModel.getImage()
+        myResponse.observe(viewLifecycleOwner, Observer { response ->
+            if(response.isSuccessful){
+                val urlImage = URL(response.body()?.message!!)
+                Log.d("image", urlImage.toString())
+                val result: Deferred<Bitmap?> = GlobalScope.async {
+                    urlImage.toBitmap()
+                }
+                GlobalScope.launch(Dispatchers.Main) {
+                    imageView.setImageBitmap(result.await())
+                }
+            }else{
+                Log.d("Response", response.errorBody().toString())
+            }
+        })
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding.name = "SWIPE FRAGMENT"
+
+        val imageView = view.findViewById<ImageView>(R.id.dogImage1)
+        val imageView2 = view.findViewById<ImageView>(R.id.dogImage2)
+        makeImageRequest(imageView)
+        makeImageRequest(imageView2)
         //affiche le contenu de main dans le fragment au bous de 3 sec
 //        Handler().postDelayed({
 //            _binding.hasToDisplay=true;
 //        }, 3000)
     }
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SwipeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SwipeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+
+    fun URL.toBitmap(): Bitmap?{
+        return try {
+            BitmapFactory.decodeStream(openStream())
+        }catch (e: IOException){
+            null
+        }
     }
+
 }

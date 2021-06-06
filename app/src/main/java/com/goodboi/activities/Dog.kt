@@ -1,6 +1,6 @@
 package com.goodboi.activities
 
-class Dog(var id: Int) {
+class Dog(var id: Int, var url: String) {
     var point = 1000.0
     var games = 0 //Number of played games = 0
     var win = 0// Number of games loose = 0
@@ -46,7 +46,7 @@ class Dog(var id: Int) {
     fun main() {//TODO modifier Main de test
         val dogs = arrayOfNulls<Dog>(10)
         for (i in 0..9) {
-            dogs[i] = Dog(i)
+            dogs[i] = Dog(i, url)
             dogs[i]!!.cute = i * 10
             println(dogs[i])
         }
