@@ -51,10 +51,13 @@ class MainActivity : AppCompatActivity() {
         val viewModelFactory = ImageViewModelFactory(repository)
         imageViewModel = ViewModelProvider(this, viewModelFactory).get(ImageViewModel::class.java)
         imageViewModel.getImage()
-        myResponse.observe(this, Observer {
-            response ->
-            Log.d("Response", response.message)
-            Log.d("Response", response.status)
+        myResponse.observe(this, Observer { response ->
+            if(response.isSuccessful){
+                Log.d("Response", response.body()?.message!!)
+                Log.d("Response", response.body()?.status!!)
+            }else{
+                Log.d("Response", response.errorBody().toString())
+            }
         })
     }
 
