@@ -37,41 +37,36 @@ class SwipeFragment : Fragment() {
         return _binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        _binding.name = "SWIPE FRAGMENT"
-
+    private fun makeImageRequest(imageView: ImageView) {
         val repository = ImageRepository()
         val viewModelFactory = ImageViewModelFactory(repository)
-        val imageView = view.findViewById<ImageView>(R.id.dogImage1)
-        val imageView2 = view.findViewById<ImageView>(R.id.dogImage2)
+        var res = URL("https://google.fr")
         imageViewModel = ViewModelProvider(this, viewModelFactory).get(ImageViewModel::class.java)
         imageViewModel.getImage()
         myResponse.observe(viewLifecycleOwner, Observer { response ->
-            if(response.isSuccessful) {
+            if(response.isSuccessful){
                 val urlImage = URL(response.body()?.message!!)
                 Log.d("image", urlImage.toString())
                 val result: Deferred<Bitmap?> = GlobalScope.async {
                     urlImage.toBitmap()
                 }
                 GlobalScope.launch(Dispatchers.Main) {
-                    imageView?.setImageBitmap(result.await())
+                    imageView.setImageBitmap(result.await())
                 }
+            }else{
+                Log.d("Response", response.errorBody().toString())
             }
         })
-        imageViewModel.getImage()
-        myResponse.observe(viewLifecycleOwner, Observer { response ->
-            if(response.isSuccessful) {
-                val urlImage2 = URL(response.body()?.message!!)
-                Log.d("image2", urlImage2.toString())
-                val result: Deferred<Bitmap?> = GlobalScope.async {
-                    urlImage2.toBitmap()
-                }
-                GlobalScope.launch(Dispatchers.Main) {
-                    imageView2?.setImageBitmap(result.await())
-                }
-            }
-        })
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding.name = "SWIPE FRAGMENT"
+
+        val imageView = view.findViewById<ImageView>(R.id.dogImage1)
+        val imageView2 = view.findViewById<ImageView>(R.id.dogImage2)
+        makeImageRequest(imageView)
+        makeImageRequest(imageView2)
         //affiche le contenu de main dans le fragment au bous de 3 sec
 //        Handler().postDelayed({
 //            _binding.hasToDisplay=true;
