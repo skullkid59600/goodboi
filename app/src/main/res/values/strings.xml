@@ -20,5 +20,6 @@
     <string name="profilePicture">Photo de profil</string>
     <string name="swipe">Swipe</string>
     <string name="takePicture">Prendre une photo</string>
+    <string name="logout">Logout</string>
     <string name="empty"></string>
 </resources>

@@ -31,4 +31,8 @@ class AuthRepository(val firebaseAuthService: FirebaseAuthService) {
         }
         return response
     }
+
+    fun signOut() {
+        firebaseAuthService.signOut()
+    }
 }

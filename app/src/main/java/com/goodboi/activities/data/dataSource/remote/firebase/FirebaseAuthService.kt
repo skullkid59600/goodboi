@@ -14,4 +14,6 @@ class FirebaseAuthService {
 
     fun signUp(email: String, password: String) =
         auth.createUserWithEmailAndPassword(email, password)
+
+    fun signOut() = auth.signOut()
 }

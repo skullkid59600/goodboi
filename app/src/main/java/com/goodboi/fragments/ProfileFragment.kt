@@ -1,6 +1,5 @@
 package com.goodboi.fragments
 
-import android.Manifest
 import android.app.Activity.RESULT_OK
 import android.content.ActivityNotFoundException
 import android.content.Intent
@@ -13,13 +12,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.goodboi.R
+import com.goodboi.fragments.viewModel.LoginViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProfilFragment : Fragment() {
 
     private val MY_CAMERA_REQUEST_CODE = 100
+    private val loginViewModel: LoginViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,6 +60,11 @@ class ProfilFragment : Fragment() {
 
         view.findViewById<Button>(R.id.buttonPhoto).setOnClickListener {
             dispatchTakePictureIntent()
+        }
+
+        view.findViewById<Button>(R.id.logoutButton).setOnClickListener {
+            loginViewModel.logOut()
+            findNavController().navigate(R.id.loginFragment)
         }
     }
 }
