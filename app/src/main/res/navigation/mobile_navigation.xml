@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/navigation_classement"
         android:name="com.goodboi.fragments.ClassementFragment"
-        android:label="fragment_classement"
+        android:label="Classement"
         tools:layout="@layout/fragment_classement" >
         <action
             android:id="@+id/action_classementFragment_to_swipeFragment"
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.goodboi.fragments.LoginFragment"
-        android:label="fragment_login"
+        android:label="Connexion"
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_swipeFragment"
@@ -34,7 +34,7 @@
     <fragment
         android:id="@+id/navigation_swipe"
         android:name="com.goodboi.fragments.SwipeFragment"
-        android:label="fragment_swipe"
+        android:label="Swipe"
         tools:layout="@layout/fragment_swipe" >
         <action
             android:id="@+id/action_swipeFragment_to_classementFragment"
@@ -47,7 +47,7 @@
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.goodboi.fragments.ProfilFragment"
-        android:label="fragment_profil"
+        android:label="Profil"
         tools:layout="@layout/fragment_profil" >
         <action
             android:id="@+id/action_profilFragment_to_swipeFragment"
@@ -56,7 +56,7 @@
     <fragment
         android:id="@+id/subscriptionFragment"
         android:name="com.goodboi.fragments.SubscriptionFragment"
-        android:label="fragment_subscription"
+        android:label="Inscription"
         tools:layout="@layout/fragment_subscription" >
         <action
             android:id="@+id/action_subscriptionFragment_to_loginFragment"

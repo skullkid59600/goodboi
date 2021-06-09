@@ -36,6 +36,9 @@ class SubscriptionFragment : Fragment() {
                     findNavController().navigate(R.id.loginFragment)
                 })
         }
+        view.findViewById<TextView>(R.id.logIn).setOnClickListener {
+            findNavController().navigate(R.id.loginFragment)
+        }
     }
 }
 

@@ -1,39 +1,37 @@
 package com.goodboi.fragments
 
-import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.os.Handler
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.goodboi.R
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.goodboi.activities.data.Dog
+import com.goodboi.activities.data.ImageViewModelFactory
+import com.goodboi.activities.data.ListDog
+import com.goodboi.activities.data.Repository.ImageRepository
 import com.goodboi.databinding.FragmentSwipeBinding
+import com.goodboi.fragments.viewModel.ImageViewModel
+import com.goodboi.fragments.viewModel.myResponse
 import com.goodboi.utils.fragmentAutoCleared
+import kotlinx.coroutines.*
+import java.io.IOException
+import java.net.URL
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SwipeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SwipeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
     private var _binding: FragmentSwipeBinding by fragmentAutoCleared()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    //Implement API Images
+    private lateinit var imageViewModel: ImageViewModel
+
+    //List des dog
+    var dogs = ListDog()
+    private lateinit var  choix1 : Dog
+    private lateinit var  choix2 : Dog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,34 +39,84 @@ class SwipeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentSwipeBinding.inflate(inflater, container, false)
+        makeImageRequest()
+        choose2Dogs()
+        updateImages()
+
+        _binding.heartImage1.setOnClickListener {
+            //On vote pour la 1e image
+            choix1.versus(0, choix2)
+            dogs.sort()
+            println(dogs.toString())
+            choose2Dogs()
+            updateImages()
+        }
+        _binding.heartImage2.setOnClickListener {
+            //On vote pour la 2e image
+            choix1.versus(1, choix2)
+            dogs.sort()
+            println(dogs.toString())
+            choose2Dogs()
+            updateImages()
+        }
+
         return _binding.root
+    }
+
+    //TODO mettre cette fonction dans ListDog et l'appeler 10 fois dans Init pour remplacer l'URL
+    fun makeImageRequest(){
+        val repository = ImageRepository()
+        val viewModelFactory = ImageViewModelFactory(repository)
+        imageViewModel = ViewModelProvider(this, viewModelFactory).get(ImageViewModel::class.java)
+        imageViewModel.getImage()
+        myResponse.observe(viewLifecycleOwner, Observer { response ->
+            if(response.isSuccessful){
+                Log.d("Response", response.body()?.message!!)
+                Log.d("Response", response.body()?.status!!)
+            }else{
+                Log.d("Response", response.errorBody().toString())
+            }
+        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding.name = "SWIPE FRAGMENT"
-        //affiche le contenu de main dans le fragment au bous de 3 sec
-//        Handler().postDelayed({
-//            _binding.hasToDisplay=true;
-//        }, 3000)
     }
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SwipeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SwipeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+
+    fun URL.toBitmap(): Bitmap?{
+        return try {
+            BitmapFactory.decodeStream(openStream())
+        }catch (e: IOException){
+            null
+        }
     }
+
+    private fun updateImages() {
+        val img1: Deferred<Bitmap?> = GlobalScope.async {
+            val urlImage = URL(choix1.url)
+            urlImage.toBitmap()
+        }
+        val img2: Deferred<Bitmap?> = GlobalScope.async {
+            val urlImage = URL(choix2.url)
+            urlImage.toBitmap()
+        }
+        GlobalScope.launch(Dispatchers.Main) {
+            _binding.dogImage1.setImageBitmap(img1.await())
+            _binding.dogImage2.setImageBitmap(img2.await())
+        }
+    }
+
+    //choisie 2 dog aléatoirement de la listDog
+    private fun choose2Dogs() {
+        var rand1 = (0 until dogs.nombre).random()
+        var rand2 = -1
+        do {
+            rand2 = (0 until dogs.nombre).random()
+        }while (rand1 == rand2)
+        choix1 = dogs.getByIndex(rand1)
+        choix2 = dogs.getByIndex(rand2)
+
+    }
+
 }

@@ -1,64 +1,112 @@
 package com.goodboi.fragments
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.fragment.app.Fragment
 import com.goodboi.R
+import com.goodboi.activities.data.ListDog
 import com.goodboi.databinding.FragmentClassementBinding
 import com.goodboi.utils.fragmentAutoCleared
+import kotlinx.coroutines.*
+import java.io.IOException
+import java.net.URL
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ClassementFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ClassementFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
     private var _binding: FragmentClassementBinding by fragmentAutoCleared()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var dogList = ListDog()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+//        val customAdapter = CustomAdapter(dogList, this)
+//        gridView?.adapter = customAdapter
         _binding = FragmentClassementBinding.inflate(inflater, container, false)
         return _binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ClassementFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ClassementFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        val dogs = dogList
+
+        val img1: Deferred<Bitmap?> = GlobalScope.async {
+            val urlImage = URL(dogs.getByIndex(1).url)
+            urlImage.toBitmap()
+        }
+        val img2: Deferred<Bitmap?> = GlobalScope.async {
+            val urlImage = URL(dogs.getByIndex(2).url)
+            urlImage.toBitmap()
+        }
+        val img3: Deferred<Bitmap?> = GlobalScope.async {
+            val urlImage = URL(dogs.getByIndex(3).url)
+            urlImage.toBitmap()
+        }
+        GlobalScope.launch(Dispatchers.Main) {
+            _binding.doge1.setImageBitmap(img1.await())
+            _binding.doge2.setImageBitmap(img2.await())
+            _binding.doge3.setImageBitmap(img3.await())
+        }
+
+        super.onViewCreated(view, savedInstanceState)
+    }
+
+
+    /*
+    class CustomAdapter(private var dogList: ListDog, var fragment: Fragment) : BaseAdapter() {
+
+        private var layoutInflater =
+            fragment.activity?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+
+        override fun getView(position: Int, views: View?, viewGroup: ViewGroup?): View {
+            var view = views
+            if (view == null) {
+                view = layoutInflater.inflate(R.layout.classement_layout, viewGroup, false)
             }
+            val point = view?.findViewById<TextView>(R.id.dogText)
+            val photoDog = view?.findViewById<ImageView>(R.id.dogPicture)
+
+            for (dog in dogList.dogs) {
+                val dogUrl = URL(dog.url)
+                point?.text = dog.getPoint().toString()
+                photoDog?.setImageBitmap(dogUrl.toBitmap())
+            }
+
+            return view!!
+        }
+
+        private fun URL.toBitmap(): Bitmap? {
+            return try {
+                BitmapFactory.decodeStream(openStream())
+            } catch (e: IOException) {
+                null
+            }
+        }
+
+        override fun getItem(position: Int): Any {
+            return dogList.dogs[position]
+        }
+
+        override fun getItemId(position: Int): Long {
+            return position.toLong()
+        }
+
+        override fun getCount(): Int {
+            return dogList.dogs.size
+
+        }
+    }
+    */
+    private fun URL.toBitmap(): Bitmap? {
+        return try {
+            BitmapFactory.decodeStream(openStream())
+        } catch (e: IOException) {
+            null
+        }
     }
 }
