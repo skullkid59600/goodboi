@@ -7,12 +7,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.goodboi.R
+import com.goodboi.activities.data.Dog
 import com.goodboi.activities.data.ImageViewModelFactory
+import com.goodboi.activities.data.ListDog
 import com.goodboi.activities.data.Repository.ImageRepository
 import com.goodboi.databinding.FragmentSwipeBinding
 import com.goodboi.fragments.viewModel.ImageViewModel
@@ -28,31 +28,51 @@ class SwipeFragment : Fragment() {
     //Implement API Images
     private lateinit var imageViewModel: ImageViewModel
 
+    //List des dog
+    var dogs = ListDog()
+    private lateinit var  choix1 : Dog
+    private lateinit var  choix2 : Dog
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentSwipeBinding.inflate(inflater, container, false)
+        makeImageRequest()
+        choose2Dogs()
+        updateImages()
+
+        _binding.heartImage1.setOnClickListener {
+            //On vote pour la 1e image
+            choix1.versus(0, choix2)
+            dogs.sort()
+            println(dogs.toString())
+            choose2Dogs()
+            updateImages()
+        }
+        _binding.heartImage2.setOnClickListener {
+            //On vote pour la 2e image
+            choix1.versus(1, choix2)
+            dogs.sort()
+            println(dogs.toString())
+            choose2Dogs()
+            updateImages()
+        }
+
         return _binding.root
     }
 
-    private fun makeImageRequest(imageView: ImageView) {
+    //TODO mettre cette fonction dans ListDog et l'appeler 10 fois dans Init pour remplacer l'URL
+    fun makeImageRequest(){
         val repository = ImageRepository()
         val viewModelFactory = ImageViewModelFactory(repository)
-        var res = URL("https://google.fr")
         imageViewModel = ViewModelProvider(this, viewModelFactory).get(ImageViewModel::class.java)
         imageViewModel.getImage()
         myResponse.observe(viewLifecycleOwner, Observer { response ->
             if(response.isSuccessful){
-                val urlImage = URL(response.body()?.message!!)
-                Log.d("image", urlImage.toString())
-                val result: Deferred<Bitmap?> = GlobalScope.async {
-                    urlImage.toBitmap()
-                }
-                GlobalScope.launch(Dispatchers.Main) {
-                    imageView.setImageBitmap(result.await())
-                }
+                Log.d("Response", response.body()?.message!!)
+                Log.d("Response", response.body()?.status!!)
             }else{
                 Log.d("Response", response.errorBody().toString())
             }
@@ -62,15 +82,6 @@ class SwipeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding.name = "SWIPE FRAGMENT"
-
-        val imageView = view.findViewById<ImageView>(R.id.dogImage1)
-        val imageView2 = view.findViewById<ImageView>(R.id.dogImage2)
-        makeImageRequest(imageView)
-        makeImageRequest(imageView2)
-        //affiche le contenu de main dans le fragment au bous de 3 sec
-//        Handler().postDelayed({
-//            _binding.hasToDisplay=true;
-//        }, 3000)
     }
 
     fun URL.toBitmap(): Bitmap?{
@@ -79,6 +90,33 @@ class SwipeFragment : Fragment() {
         }catch (e: IOException){
             null
         }
+    }
+
+    private fun updateImages() {
+        val img1: Deferred<Bitmap?> = GlobalScope.async {
+            val urlImage = URL(choix1.url)
+            urlImage.toBitmap()
+        }
+        val img2: Deferred<Bitmap?> = GlobalScope.async {
+            val urlImage = URL(choix2.url)
+            urlImage.toBitmap()
+        }
+        GlobalScope.launch(Dispatchers.Main) {
+            _binding.dogImage1.setImageBitmap(img1.await())
+            _binding.dogImage2.setImageBitmap(img2.await())
+        }
+    }
+
+    //choisie 2 dog aléatoirement de la listDog
+    private fun choose2Dogs() {
+        var rand1 = (0 until dogs.nombre).random()
+        var rand2 = -1
+        do {
+            rand2 = (0 until dogs.nombre).random()
+        }while (rand1 == rand2)
+        choix1 = dogs.getByIndex(rand1)
+        choix2 = dogs.getByIndex(rand2)
+
     }
 
 }

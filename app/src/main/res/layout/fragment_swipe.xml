@@ -20,10 +20,10 @@
 
         <ImageView
             android:id="@+id/heartImage1"
-            android:layout_width="52dp"
+            android:layout_width="48dp"
             android:layout_height="52dp"
-            android:layout_marginStart="80dp"
-            android:layout_marginBottom="25dp"
+            android:layout_marginStart="85dp"
+            android:layout_marginBottom="15dp"
             android:contentDescription="@string/like"
             android:scaleX="1"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -33,10 +33,10 @@
 
         <ImageView
             android:id="@+id/heartImage2"
-            android:layout_width="52dp"
-            android:layout_height="52dp"
-            android:layout_marginEnd="80dp"
-            android:layout_marginBottom="25dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="85dp"
+            android:layout_marginBottom="15dp"
             android:contentDescription="@string/like"
             android:scaleX="1"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -47,44 +47,44 @@
 
         <ImageView
             android:id="@+id/dogImage1"
-            android:layout_width="198dp"
-            android:layout_height="200dp"
+            android:layout_width="172dp"
+            android:layout_height="172dp"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
-            android:layout_marginBottom="56dp"
+            android:layout_marginBottom="55dp"
             android:background="@color/choice1"
+            android:contentDescription="@string/dog"
+            android:padding="2dp"
             android:src="@drawable/golder_retriever_puppy"
-            android:padding="4dp"
             app:layout_constraintBottom_toBottomOf="@+id/polaroidImage1"
             app:layout_constraintEnd_toEndOf="@+id/polaroidImage1"
             app:layout_constraintStart_toStartOf="@+id/polaroidImage1"
-            app:layout_constraintTop_toTopOf="@+id/polaroidImage1"
-            android:contentDescription="@string/dog"/>
+            app:layout_constraintTop_toTopOf="@+id/polaroidImage1" />
 
         <ImageView
             android:id="@+id/dogImage2"
-            android:layout_width="198dp"
-            android:layout_height="200dp"
+            android:layout_width="172dp"
+            android:layout_height="172dp"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
-            android:layout_marginBottom="56dp"
+            android:layout_marginBottom="55dp"
             android:background="@color/choice2"
+            android:contentDescription="@string/dog"
+            android:padding="2dp"
             android:src="@drawable/golder_retriever_puppy"
-            android:padding="4dp"
             app:layout_constraintBottom_toBottomOf="@+id/polaroidImage2"
             app:layout_constraintEnd_toEndOf="@+id/polaroidImage2"
             app:layout_constraintStart_toStartOf="@+id/polaroidImage2"
-            app:layout_constraintTop_toTopOf="@+id/polaroidImage2"
-            android:contentDescription="@string/dog"/>
+            app:layout_constraintTop_toTopOf="@+id/polaroidImage2" />
 
         <ImageView
             android:id="@+id/polaroidImage1"
-            android:layout_width="230dp"
-            android:layout_height="282dp"
+            android:layout_width="200dp"
+            android:layout_height="252dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="5dp"
             android:contentDescription="@string/dog"
             android:padding="1dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -93,15 +93,15 @@
 
         <ImageView
             android:id="@+id/polaroidImage2"
-            android:layout_width="230dp"
-            android:layout_height="282dp"
-            android:layout_marginStart="148dp"
-            android:layout_marginTop="320dp"
+            android:layout_width="200dp"
+            android:layout_height="252dp"
+            android:layout_marginEnd="32dp"
             android:contentDescription="@string/dog"
             android:elevation="30dp"
             android:padding="1dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/heartImage2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/polaroidImage1"
             app:srcCompat="@drawable/polaroid" />
 
         <TextView
