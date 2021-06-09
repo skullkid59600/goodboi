@@ -47,8 +47,8 @@
 
         <ImageView
             android:id="@+id/dogImage1"
-            android:layout_width="198dp"
-            android:layout_height="200dp"
+            android:layout_width="168dp"
+            android:layout_height="170dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="6dp"
             android:layout_marginEnd="15dp"
@@ -64,8 +64,8 @@
 
         <ImageView
             android:id="@+id/dogImage2"
-            android:layout_width="198dp"
-            android:layout_height="200dp"
+            android:layout_width="168dp"
+            android:layout_height="170dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="6dp"
             android:layout_marginEnd="15dp"
@@ -81,8 +81,8 @@
 
         <ImageView
             android:id="@+id/polaroidImage1"
-            android:layout_width="230dp"
-            android:layout_height="282dp"
+            android:layout_width="200dp"
+            android:layout_height="252dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="30dp"
             android:contentDescription="@string/dog"
@@ -93,14 +93,14 @@
 
         <ImageView
             android:id="@+id/polaroidImage2"
-            android:layout_width="230dp"
-            android:layout_height="282dp"
-            android:layout_marginStart="148dp"
-            android:layout_marginTop="320dp"
+            android:layout_width="200dp"
+            android:layout_height="252dp"
+            android:layout_marginTop="280dp"
+            android:layout_marginEnd="32dp"
             android:contentDescription="@string/dog"
             android:elevation="30dp"
             android:padding="1dp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/polaroid" />
 
