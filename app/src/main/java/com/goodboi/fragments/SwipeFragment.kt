@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -40,6 +39,7 @@ class SwipeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentSwipeBinding.inflate(inflater, container, false)
+        makeImageRequest()
         choose2Dogs()
         updateImages()
 
@@ -64,22 +64,15 @@ class SwipeFragment : Fragment() {
     }
 
     //TODO mettre cette fonction dans ListDog et l'appeler 10 fois dans Init pour remplacer l'URL
-    private fun makeImageRequest(imageView: ImageView) {
+    fun makeImageRequest(){
         val repository = ImageRepository()
         val viewModelFactory = ImageViewModelFactory(repository)
-        var res = URL("https://google.fr")
         imageViewModel = ViewModelProvider(this, viewModelFactory).get(ImageViewModel::class.java)
         imageViewModel.getImage()
         myResponse.observe(viewLifecycleOwner, Observer { response ->
             if(response.isSuccessful){
-                val urlImage = URL(response.body()?.message!!)
-                Log.d("image", urlImage.toString())
-                val result: Deferred<Bitmap?> = GlobalScope.async {
-                    urlImage.toBitmap()
-                }
-                GlobalScope.launch(Dispatchers.Main) {
-                    imageView.setImageBitmap(result.await())
-                }
+                Log.d("Response", response.body()?.message!!)
+                Log.d("Response", response.body()?.status!!)
             }else{
                 Log.d("Response", response.errorBody().toString())
             }

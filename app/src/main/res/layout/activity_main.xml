@@ -12,34 +12,6 @@
         android:background="@color/backgroud"
         tools:context=".activities.MainActivity">
 
-<!--        <com.google.android.material.tabs.TabLayout-->
-<!--            android:id="@+id/nav_viewTab"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="?android:attr/windowBackground"-->
-<!--            app:layout_constraintHorizontal_bias="0.0"-->
-<!--            app:layout_constraintLeft_toLeftOf="parent"-->
-<!--            app:layout_constraintRight_toRightOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent">-->
-
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:id="@+id/iconClassement"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:icon="@drawable/couronne"/>-->
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:id="@+id/iconSwap"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:icon="@drawable/swipe"/>-->
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:id="@+id/iconProfile"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:icon="@drawable/profile"/>-->
-
-<!--        </com.google.android.material.tabs.TabLayout>-->
-
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/nav_host_fragment"

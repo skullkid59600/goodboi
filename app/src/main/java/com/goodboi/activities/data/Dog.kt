@@ -29,30 +29,4 @@ class Dog(var id: Int, var url: String) {
     override fun toString(): String {
         return "Dog(id=$id, point=$point, url='$url')"
     }
-
-
-//    fun main() {//TODO modifier Main de test
-//        val dogs = arrayOfNulls<Dog>(10)
-//        for (i in 0..9) {
-//            dogs[i] = Dog(i, url)
-//            dogs[i]!!.cute = i * 10
-//            println(dogs[i])
-//        }
-//        println("Starting versus : ")
-//        var iteration = 0
-//        while (iteration < 10000) {
-//            for (i in 0..8) {
-//                val b = i + 1
-//                val diff = Math.abs(dogs[i]!!.cute - dogs[b]!!.cute)
-//                var vote = 0
-//                if (Math.floor(Math.random() * 100).toInt() > diff) vote = 1
-//                dogs[i]!!.versus(vote,
-//                        dogs[b]!!)
-//                iteration++
-//            }
-//        }
-//        for (i in 0..9) {
-//            println(dogs[i])
-//        }
-//    }
 }
