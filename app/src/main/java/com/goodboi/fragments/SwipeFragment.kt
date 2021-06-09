@@ -46,14 +46,16 @@ class SwipeFragment : Fragment() {
         _binding.heartImage1.setOnClickListener {
             //On vote pour la 1e image
             choix1.versus(0, choix2)
-            println(choix1.toString() + choix2.toString())
+            dogs.sort()
+            println(dogs.toString())
             choose2Dogs()
             updateImages()
         }
         _binding.heartImage2.setOnClickListener {
             //On vote pour la 2e image
             choix1.versus(1, choix2)
-            println(choix1.toString() + choix2.toString())
+            dogs.sort()
+            println(dogs.toString())
             choose2Dogs()
             updateImages()
         }

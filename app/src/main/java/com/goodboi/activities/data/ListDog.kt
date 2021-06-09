@@ -37,4 +37,20 @@ class ListDog {
         }
         return Dog(-1, "")
     }
+    //trie la liste par score
+    fun sort(){
+        for (i in 0 until nombre) {
+            for (j in 1 until nombre - i) {
+                if(dogs.get(j-1).getPoint() < dogs.get(j).getPoint()){
+                    var tmp = dogs.get(j-1)
+                    dogs.set(j-1, dogs.get(j))
+                    dogs.set(j, tmp)
+                }
+            }
+        }
+    }
+    override fun toString(): String {
+        return "ListDog(dogs=$dogs, nombre=$nombre)"
+    }
+
 }

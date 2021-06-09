@@ -7,8 +7,6 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.goodboi.R
 import com.goodboi.databinding.MainActivityBinding
@@ -29,11 +27,6 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         nNavControler = navHostFragment.navController
 
-        val appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.navigation_classement, R.id.navigation_swipe, R.id.navigation_profile
-        ))
-        //syncronise texte de l'action bar tout en haut avec le fragment
-        setupActionBarWithNavController(nNavControler, appBarConfiguration)
     navView.setupWithNavController(nNavControler)
     }
 
