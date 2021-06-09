@@ -65,7 +65,6 @@ class SwipeFragment : Fragment() {
     private fun makeImageRequest(imageView: ImageView) {
         val repository = ImageRepository()
         val viewModelFactory = ImageViewModelFactory(repository)
-        var res = URL("https://google.fr")
         imageViewModel = ViewModelProvider(this, viewModelFactory).get(ImageViewModel::class.java)
         imageViewModel.getImage()
         myResponse.observe(viewLifecycleOwner, Observer { response ->
